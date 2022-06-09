@@ -17,10 +17,9 @@ class MealDetailScreen extends StatelessWidget {
   Widget buildContainer(Widget child) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.grey,
-        border: Border.all(color: Colors.white),
-        borderRadius: BorderRadius.circular(15)
-      ),
+          color: Colors.grey,
+          border: Border.all(color: Colors.white),
+          borderRadius: BorderRadius.circular(15)),
       margin: EdgeInsets.all(10),
       padding: EdgeInsets.all(10),
       height: 200,
@@ -54,8 +53,8 @@ class MealDetailScreen extends StatelessWidget {
                 itemBuilder: (ctx, index) => Card(
                   color: const Color(0xFF777777),
                   child: Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 5.0, horizontal: 10),
                     child: Text(
                       selectedMeal.ingredients[index],
                       style: const TextStyle(
@@ -76,9 +75,7 @@ class MealDetailScreen extends StatelessWidget {
                     leading: CircleAvatar(
                       child: Text('# ${index + 1}'),
                     ),
-                    title: Text(
-                      selectedMeal.steps[index]
-                    ),
+                    title: Text(selectedMeal.steps[index]),
                   ),
                   Divider(
                     color: Colors.black54,
@@ -86,9 +83,20 @@ class MealDetailScreen extends StatelessWidget {
                 ],
               ),
               itemCount: selectedMeal.steps.length,
-            ))
+            )),
+            SizedBox(height: 50),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(
+          Icons.delete,
+          color: Colors.white,
+        ),
+        backgroundColor: Theme.of(context).primaryColor,
+        onPressed: () {
+          Navigator.of(context).pop(mealId);
+        },
       ),
     );
   }
